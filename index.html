@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخطة الزمنية لإرسال إرشادات المعتمرين</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0E8481;
+            --secondary: #9B8579;
+            --bg-color: #FDFBF7;
+            --white: #ffffff;
+            --copy-color: #d9884a;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: var(--bg-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            min-height: 100vh;
+        }
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 30px 20px 20px;
+            background: linear-gradient(to bottom, #eef3f3, var(--bg-color));
+            border-bottom: 3px solid var(--secondary);
+        }
+        .logo {
+            max-width: 140px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        .org-name {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        .main-title {
+            color: var(--secondary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 20px;
+            margin: 15px 20px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border-right: 4px solid var(--primary);
+        }
+        .section h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        .goals-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .goals-list li {
+            margin-bottom: 15px;
+        }
+        .goals-list strong {
+            color: var(--secondary);
+            display: block;
+            font-size: 1.1rem;
+        }
+        
+        /* Videos & Copy Button */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin: 20px 20px 10px 20px;
+            background-color: #eee;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .copy-btn {
+            background-color: var(--copy-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 5px auto 25px auto;
+            transition: 0.3s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .copy-btn:hover { background-color: #c7763b; }
+
+        /* Forms & Buttons */
+        .btn {
+            display: block;
+            text-align: center;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 15px 0 10px 0;
+            transition: 0.3s;
+            border: 1px solid var(--primary);
+        }
+        .btn-secondary { background-color: var(--secondary); border-color: var(--secondary); }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 30px 20px;
+            padding-right: 30px;
+            border-right: 3px dashed var(--secondary);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            background: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+        }
+        .timeline-item::before {
+            content: '🕋';
+            position: absolute;
+            right: -45px;
+            top: 15px;
+            background: var(--bg-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border: 2px solid var(--primary);
+        }
+        .time-label {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: inline-block;
+            background: #f4efea;
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin: 5px 0 10px;
+            font-weight: 700;
+        }
+        
+        /* Direct Images with Safari Fix */
+        .direct-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border: 1px solid #eaeaea;
+            min-height: 200px;
+            background-color: #f9f9f9;
+            cursor: pointer; /* للإشارة بأنها قابلة للضغط */
+        }
+        
+        /* Image Action Button (Save/Share) */
+        .img-action-btn {
+            display: block;
+            width: 100%;
+            background-color: #f4efea;
+            color: var(--primary);
+            border: 1px solid var(--secondary);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .img-action-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-top: 4px solid var(--secondary);
+        }
+        .footer a { color: var(--white); text-decoration: none; }
+        .footer-logo { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+        .footer-contact { font-size: 1.1rem; margin-top: 10px; direction: ltr; }
+        .text-center { text-align: center; }
+
+        /* Notification Toast */
+        #toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+        #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="header">
+        <img src="https://lh3.googleusercontent.com/d/15Wt0RUJt-3QSrnoCHCTzBZ_JVQrJRiLR" alt="شعار جمعية سند" class="logo" loading="lazy">
+        <h1 class="org-name">جمعية سند ضيوف الرحمن</h1>
+        <h2 class="main-title">الخطة الزمنية لإرسال إرشادات المعتمرين 🕋</h2>
+    </div>
+
+    <div class="section">
+        <h3>🎯 الهدف العام</h3>
+        <p>رفع مستوى الوعي الشرعي والسلوكي لضيوف الرحمن، وتعظيم شعائر الله في نفوسهم من خلال محتوى رقمي موثوق وسهل الانتشار.</p>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        <h3>📋 الأهداف التفصيلية</h3>
+        <ul class="goals-list">
+            <li><strong>📖 توعية المعتمرين</strong> بأحكام عبادتهم التي سافروا من أجلها لضمان صحة النسك.</li>
+            <li><strong>🤝 ترسيخ القيم الإسلامية</strong> كالإحسان، التعاون، الرفق، الصبر، حفظ اللسان، ومراعاة الأنظمة.</li>
+            <li><strong>🛡️ السلامة والوقاية</strong> الالتزام بالأنظمة وتجنب الزحام.</li>
+            <li><strong>🕌 تعظيم الشعائر</strong> استشعار قدسية الزمان والمكان.</li>
+        </ul>
+    </div>
+
+    <h3 class="text-center" style="color: var(--primary); margin-top: 30px;">🎬 قبل الانطلاق</h3>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/QKY8LaDdoYo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="text-center">
+        <button class="copy-btn" onclick="copyText('https://youtu.be/QKY8LaDdoYo')">📋 نسخ رابط الفيديو</button>
+    </div>
+
+    <div class="section" style="text-align: center;">
+        <h3>مسافر للعمرة ؟ ✈️</h3>
+        <p>دقائق قليلة تختبر بها معلوماتك عن العمرة .. ؟ 🕋</p>
+        <a href="https://forms.gle/2g1igT4FBhsF2i1X8" target="_blank" class="btn">📝 ابدأ الاستبانة الآن</a>
+        <button class="copy-btn" onclick="copyText('https://forms.gle/2g1igT4FBhsF2i1X8')" style="margin-top: 10px;">📋 نسخ رابط الاستبانة</button>
+    </div>
+
+    <h2 class="text-center" style="color: var(--secondary); margin-top: 40px; font-size: 1.5rem;">📍 خط سير الرحلة الإرشادية</h2>
+
+    <div class="timeline">
+        
+        <div class="timeline-item">
+            <span class="time-label">⏳ قبل الانطلاق</span>
+            <h4 class="timeline-title">1. أذكار السفر</h4>
+            <img src="https://lh3.googleusercontent.com/d/1jFi2IpPARQQIVKBcgvQGEsUOyz67MO4r" loading="lazy" class="direct-img" alt="أذكار السفر" onclick="shareOrSaveImage('1jFi2IpPARQQIVKBcgvQGEsUOyz67MO4r', 'أذكار السفر')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1jFi2IpPARQQIVKBcgvQGEsUOyz67MO4r', 'أذكار السفر')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🚌 عند الانطلاق</span>
+            <h4 class="timeline-title">2. دعاء السفر</h4>
+            <img src="https://lh3.googleusercontent.com/d/1slLCh-9c0eW3xOEk5zH9u3cG1c_a8U5N" loading="lazy" class="direct-img" alt="دعاء السفر" onclick="shareOrSaveImage('1slLCh-9c0eW3xOEk5zH9u3cG1c_a8U5N', 'دعاء السفر')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1slLCh-9c0eW3xOEk5zH9u3cG1c_a8U5N', 'دعاء السفر')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🛣️ بعد الخروج من البلد</span>
+            <h4 class="timeline-title">3. رخص السفر</h4>
+            <img src="https://lh3.googleusercontent.com/d/1F0iDuDToO1oprC8RYbVr2E_flPIB9xci" loading="lazy" class="direct-img" alt="رخص السفر" onclick="shareOrSaveImage('1F0iDuDToO1oprC8RYbVr2E_flPIB9xci', 'رخص السفر')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1F0iDuDToO1oprC8RYbVr2E_flPIB9xci', 'رخص السفر')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🛣️ بعد الخروج من البلد</span>
+            <h4 class="timeline-title">4. من أحكام الصلاة للمسافر</h4>
+            <img src="https://lh3.googleusercontent.com/d/1pOphKIoHrPgbKCuw9j9o6o5vq-X1mgMZ" loading="lazy" class="direct-img" alt="أحكام الصلاة للمسافر" onclick="shareOrSaveImage('1pOphKIoHrPgbKCuw9j9o6o5vq-X1mgMZ', 'أحكام الصلاة للمسافر')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1pOphKIoHrPgbKCuw9j9o6o5vq-X1mgMZ', 'أحكام الصلاة للمسافر')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🚌 في الطريق</span>
+            <h4 class="timeline-title">5. دعوتك مستجابة</h4>
+            <img src="https://lh3.googleusercontent.com/d/1gwtQr5kqYifVHoO2PT_XHYZZv0reJ8vn" loading="lazy" class="direct-img" alt="دعوتك مستجابة" onclick="shareOrSaveImage('1gwtQr5kqYifVHoO2PT_XHYZZv0reJ8vn', 'دعوتك مستجابة')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1gwtQr5kqYifVHoO2PT_XHYZZv0reJ8vn', 'دعوتك مستجابة')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🚌 في الطريق</span>
+            <h4 class="timeline-title">6. فضل العمرة</h4>
+            <img src="https://lh3.googleusercontent.com/d/1k5PPHzxvdtlCUSnluQDWu1N0dzLLH8HV" loading="lazy" class="direct-img" alt="فضل العمرة" onclick="shareOrSaveImage('1k5PPHzxvdtlCUSnluQDWu1N0dzLLH8HV', 'فضل العمرة')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1k5PPHzxvdtlCUSnluQDWu1N0dzLLH8HV', 'فضل العمرة')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🛑 قبل الميقات</span>
+            <h4 class="timeline-title">7. خريطة العمرة</h4>
+            <img src="https://lh3.googleusercontent.com/d/1mpaSOeYywD8mfv_ecvySsslI_EACyog5" loading="lazy" class="direct-img" alt="خريطة العمرة" onclick="shareOrSaveImage('1mpaSOeYywD8mfv_ecvySsslI_EACyog5', 'خريطة العمرة')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1mpaSOeYywD8mfv_ecvySsslI_EACyog5', 'خريطة العمرة')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🛑 قبل الميقات</span>
+            <h4 class="timeline-title">8. كيفية الإحرام</h4>
+            <img src="https://lh3.googleusercontent.com/d/1F78YdFzfjXPUN-fZ4maC__28fvGWLkh1" loading="lazy" class="direct-img" alt="كيفية الإحرام" onclick="shareOrSaveImage('1F78YdFzfjXPUN-fZ4maC__28fvGWLkh1', 'كيفية الإحرام')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1F78YdFzfjXPUN-fZ4maC__28fvGWLkh1', 'كيفية الإحرام')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">أبيض بعد الإحرام</span>
+            <h4 class="timeline-title">9. محظورات الإحرام</h4>
+            <img src="https://lh3.googleusercontent.com/d/1vIzqrWB7ZbhjHlztATTIHKk1q0Eo9Pu2" loading="lazy" class="direct-img" alt="محظورات الإحرام" onclick="shareOrSaveImage('1vIzqrWB7ZbhjHlztATTIHKk1q0Eo9Pu2', 'محظورات الإحرام')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1vIzqrWB7ZbhjHlztATTIHKk1q0Eo9Pu2', 'محظورات الإحرام')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🚶 بعد الميقات</span>
+            <h4 class="timeline-title">10. سنن العمرة</h4>
+            <img src="https://lh3.googleusercontent.com/d/1vfsn4Q8xlcCv9w0c-ltC8liprD5-MfAK" loading="lazy" class="direct-img" alt="سنن العمرة" onclick="shareOrSaveImage('1vfsn4Q8xlcCv9w0c-ltC8liprD5-MfAK', 'سنن العمرة')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1vfsn4Q8xlcCv9w0c-ltC8liprD5-MfAK', 'سنن العمرة')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🕋 قبل دخول مكة</span>
+            <h4 class="timeline-title">11. خصائص الحرم</h4>
+            <img src="https://lh3.googleusercontent.com/d/1Vycz41d-5iaY8nkFn8oX03k0TwkrXMmh" loading="lazy" class="direct-img" alt="خصائص الحرم" onclick="shareOrSaveImage('1Vycz41d-5iaY8nkFn8oX03k0TwkrXMmh', 'خصائص الحرم')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1Vycz41d-5iaY8nkFn8oX03k0TwkrXMmh', 'خصائص الحرم')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🕌 عند دخول مكة</span>
+            <h4 class="timeline-title">12. أدعية من الكتاب والسنة</h4>
+            <img src="https://lh3.googleusercontent.com/d/18aQNNc7zZTMpdNO9gCzLaFEN49_pKvgt" loading="lazy" class="direct-img" alt="أدعية" onclick="shareOrSaveImage('18aQNNc7zZTMpdNO9gCzLaFEN49_pKvgt', 'أدعية')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('18aQNNc7zZTMpdNO9gCzLaFEN49_pKvgt', 'أدعية')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🕌 عند دخول مكة</span>
+            <h4 class="timeline-title">13. ابتعد عن الزحام</h4>
+            <img src="https://lh3.googleusercontent.com/d/1gAtTRcyLbOkgNelfGcR8t8ZCUnCAOWFX" loading="lazy" class="direct-img" alt="ابتعد عن الزحام" onclick="shareOrSaveImage('1gAtTRcyLbOkgNelfGcR8t8ZCUnCAOWFX', 'ابتعد عن الزحام')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1gAtTRcyLbOkgNelfGcR8t8ZCUnCAOWFX', 'ابتعد عن الزحام')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">✅ بعد العمرة</span>
+            <h4 class="timeline-title">14. رفقا بضيوف الرحمن</h4>
+            <img src="https://lh3.googleusercontent.com/d/1ljaRLhHa9GAtOjP2GLkM2xoLuVNZjorw" loading="lazy" class="direct-img" alt="رفقا بضيوف الرحمن" onclick="shareOrSaveImage('1ljaRLhHa9GAtOjP2GLkM2xoLuVNZjorw', 'رفقا بضيوف الرحمن')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1ljaRLhHa9GAtOjP2GLkM2xoLuVNZjorw', 'رفقا بضيوف الرحمن')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">✅ بعد العمرة</span>
+            <h4 class="timeline-title">15. ولجسدك عليك حقا</h4>
+            <img src="https://lh3.googleusercontent.com/d/1AnhE7elZPkYmq6IYSo0uRpJyexxcWiAZ" loading="lazy" class="direct-img" alt="ولجسدك عليك حقا" onclick="shareOrSaveImage('1AnhE7elZPkYmq6IYSo0uRpJyexxcWiAZ', 'ولجسدك عليك حقا')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1AnhE7elZPkYmq6IYSo0uRpJyexxcWiAZ', 'ولجسدك عليك حقا')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-label">🔙 في طريق العودة</span>
+            <h4 class="timeline-title">16. شكر الله تعالى</h4>
+            <img src="https://lh3.googleusercontent.com/d/1eVdwd3UeIBllKchs_A3Sy-lTz2vcB5fm" loading="lazy" class="direct-img" alt="شكر الله تعالى" onclick="shareOrSaveImage('1eVdwd3UeIBllKchs_A3Sy-lTz2vcB5fm', 'شكر الله تعالى')">
+            <button class="img-action-btn" onclick="shareOrSaveImage('1eVdwd3UeIBllKchs_A3Sy-lTz2vcB5fm', 'شكر الله تعالى')">📥 حفظ / 📤 مشاركة الصورة</button>
+        </div>
+
+    </div>
+
+    <h3 class="text-center" style="color: var(--primary); margin-top: 30px;">🎬 بعد العمرة</h3>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/NSa832DzY90" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="text-center">
+        <button class="copy-btn" onclick="copyText('https://youtu.be/NSa832DzY90')">📋 نسخ رابط الفيديو</button>
+    </div>
+
+    <div class="section" style="text-align: center; background-color: #fcf8f2;">
+        <h3>📊 تقييم المحتوى</h3>
+        <p>سعياً منا في تطوير الرسائل التوعوية لرحلة العمرة، نرجو التكرم بدقائق يسيرة لتقييم المحتوى التوعوي والإرشادي، ما تقدمونه هو محل اهتمامنا وتقديرنا 🌹</p>
+        <a href="https://forms.gle/h9P2NcJYXT4JsZ7d6" target="_blank" class="btn btn-secondary">⭐ قياس الرضا وتقييم المحتوى</a>
+    </div>
+
+    <div class="section text-center">
+        <h3>📚 للاستزادة العلمية</h3>
+        <p>المزيد من الفتاوى والدروس والمواد النافعة.</p>
+        <a href="https://hajjumrh.com/ar/contents" target="_blank" class="btn">🌐 تصفح الموقع</a>
+    </div>
+
+    <div class="footer">
+        <div class="footer-logo">جمعية سند ضيوف الرحمن</div>
+        <div>نرافقك في رحلتك الإيمانية</div>
+        <div class="footer-contact">
+            🌐 <a href="https://sanadfsp.org.sa" target="_blank">sanadfsp.org.sa</a><br>
+            📞 <a href="tel:+966509100083">+966509100083</a>
+        </div>
+    </div>
+
+</div>
+
+<div id="toast">✅ تم نسخ الرابط بنجاح!</div>
+
+<script>
+    // دالة نسخ الروابط
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            var toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }).catch(function(err) {
+            alert('لم نتمكن من نسخ الرابط تلقائياً، يرجى نسخه يدوياً.');
+        });
+    }
+
+    // دالة مشاركة أو حفظ الصورة
+    function shareOrSaveImage(id, title) {
+        // الرابط المباشر للصورة بجودة عالية
+        var directUrl = 'https://lh3.googleusercontent.com/d/' + id;
+        
+        // التحقق مما إذا كان جوال المستخدم يدعم نافذة المشاركة الأصلية (مثل الآيفون والأندرويد الحديث)
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                text: 'شاهد هذه الصورة التوعوية للمعتمرين: ' + title,
+                url: directUrl
+            }).catch(function(err) {
+                // إذا ألغى المستخدم المشاركة، أو حدث خطأ، نفتح له الصورة في نافذة جديدة ليحفظها
+                window.open(directUrl, '_blank');
+            });
+        } else {
+            // في حال كان يتصفح من كمبيوتر أو متصفح لا يدعم المشاركة، نفتح الصورة مباشرة ليحفظها
+            window.open(directUrl, '_blank');
+        }
+    }
+</script>
+
+</body>
+</html>
